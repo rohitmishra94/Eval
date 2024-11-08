@@ -34,7 +34,6 @@ STEP 5: Output your assessment reasoning in the explanation field.
 ### Response A
 {baseline_model_response}
 
-
 ### Response B
 {response}
 """
