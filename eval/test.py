@@ -98,6 +98,7 @@ While the scene you describe might *suggest* a Chinese New Year celebration, it 
 response = requests.post(url, json=data_pairwise, stream=True)
 
 # Check if the request was successful
+import json
 if response.status_code == 200:
     print("Streaming Response:")
     # Iterate over the response content as it streams
@@ -105,6 +106,6 @@ if response.status_code == 200:
         # Filter out keep-alive new lines
         if line:
             # Decode and print each line of the response
-            print(line.decode('utf-8'))
+            print(json.loads(line.decode('utf-8'))['pairwise_choice'])
 else:
     print("Failed to connect:", response.status_code, response.text)
