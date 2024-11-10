@@ -1,5 +1,5 @@
-import pointwise
-import pairwise
+from prompts import pointwise
+from prompts import pairwise
 
 pointwise_prompt_selector = {
     'fluency': pointwise.fluency,
