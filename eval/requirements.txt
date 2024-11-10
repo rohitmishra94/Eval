@@ -1,0 +1,6 @@
+tqdm
+openai
+tenacity
+python-dotenv
+fastapi
+uvicorn
