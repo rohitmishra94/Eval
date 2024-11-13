@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from models.model_openai import router as openai_router
+from models.model_gemini import router as gemini_router
 
 
 app = FastAPI()
@@ -21,6 +22,7 @@ app.add_middleware(
 
 # Include routers from the sub-servers
 app.include_router(openai_router, prefix="/api/openai")
+app.include_router(gemini_router, prefix="/api/gemini")
 
 # Routes in the main server
 @app.get("/")

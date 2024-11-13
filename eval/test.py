@@ -1,57 +1,57 @@
 import requests
 
 # Define the URL for your FastAPI endpoint
-# url = "http://127.0.0.1:8000/api/openai/judge/pointwise"
+url = "http://127.0.0.1:8000/api/gemini/judge/pointwise"
 
 # Define the payload with the necessary parameters
-# data = {
-#     "prompt": f"""# System_prompt
-# You are an AI assistant. You will be given a task. You must generate a detailed and long answer. # Question
-# Single/multi-select question: If "Two people are wearing a Chinese dragon costume in front of an ornate Chinese gazebo with red pillars and the gazebo has two large red lanterns hanging from the roof.", can we conclude "The people are celebrating Chinese New Year."?
+data = {
+    "prompt": f"""# System_prompt
+You are an AI assistant. You will be given a task. You must generate a detailed and long answer. # Question
+Single/multi-select question: If "Two people are wearing a Chinese dragon costume in front of an ornate Chinese gazebo with red pillars and the gazebo has two large red lanterns hanging from the roof.", can we conclude "The people are celebrating Chinese New Year."?
 
-#  a). yes. b). it is not possible to tell. c). no.""",
-#     "response": f"""The most accurate answer is **b) it is not possible to tell.** Here's why:
+ a). yes. b). it is not possible to tell. c). no.""",
+    "response": f"""The most accurate answer is **b) it is not possible to tell.** Here's why:
 
-# **While the imagery strongly suggests Chinese New Year, we cannot definitively conclude that's the celebration without further context.** 
+**While the imagery strongly suggests Chinese New Year, we cannot definitively conclude that's the celebration without further context.** 
 
-# Here's a breakdown of why:
+Here's a breakdown of why:
 
-# **Elements that suggest Chinese New Year:**
+**Elements that suggest Chinese New Year:**
 
-# * **Chinese Dragon Costume:** Dragon dances are a very prominent tradition during Chinese New Year, symbolizing good luck and prosperity.
-# * **Ornate Chinese Gazebo:**  Gazebos are often seen in Chinese gardens and parks, places where New Year festivities might take place.
-# * **Red Lanterns:** Red is the color of luck and prosperity in Chinese culture and is heavily featured during Chinese New Year. Lanterns are also common decorations.
+* **Chinese Dragon Costume:** Dragon dances are a very prominent tradition during Chinese New Year, symbolizing good luck and prosperity.
+* **Ornate Chinese Gazebo:**  Gazebos are often seen in Chinese gardens and parks, places where New Year festivities might take place.
+* **Red Lanterns:** Red is the color of luck and prosperity in Chinese culture and is heavily featured during Chinese New Year. Lanterns are also common decorations.
 
-# **Reasons why it might NOT be Chinese New Year:**
+**Reasons why it might NOT be Chinese New Year:**
 
-# * **Other Chinese Festivals:**  Many other Chinese festivals and celebrations incorporate similar elements like dragon dances, red lanterns, and traditional attire.
-# * **Cultural Performances:** The scene could depict a cultural performance or parade unrelated to a specific holiday. 
-# * **Staged Event:** The scene could be part of a play, movie set, or photoshoot with no connection to an actual celebration.
+* **Other Chinese Festivals:**  Many other Chinese festivals and celebrations incorporate similar elements like dragon dances, red lanterns, and traditional attire.
+* **Cultural Performances:** The scene could depict a cultural performance or parade unrelated to a specific holiday. 
+* **Staged Event:** The scene could be part of a play, movie set, or photoshoot with no connection to an actual celebration.
 
-# **To definitively conclude it's Chinese New Year,""",
-#     "metric": "coherence",
-#     "history": []  # Adjust this based on your endpoint's requirements
-# }
+**To definitively conclude it's Chinese New Year,""",
+    "metric": "coherence",
+    "history": []  # Adjust this based on your endpoint's requirements
+}
 
 # Send the POST request with the JSON payload and enable streaming
-# response = requests.post(url, json=data, stream=True)
+response = requests.post(url, json=data, stream=True)
 
-# # Check if the request was successful
-# if response.status_code == 200:
-#     print("Streaming Response:")
-#     # Iterate over the response content as it streams
-#     for line in response.iter_lines():
-#         # Filter out keep-alive new lines
-#         if line:
-#             # Decode and print each line of the response
-#             print(line.decode('utf-8'))
-# else:
-#     print("Failed to connect:", response.status_code, response.text)
-
-
+# Check if the request was successful
+if response.status_code == 200:
+    print("Streaming Response:")
+    # Iterate over the response content as it streams
+    for line in response.iter_lines():
+        # Filter out keep-alive new lines
+        if line:
+            # Decode and print each line of the response
+            print(line.decode('utf-8'))
+else:
+    print("Failed to connect:", response.status_code, response.text)
 
 
-url = "http://127.0.0.1:8000/api/openai/judge/pairwise"
+
+
+url = "http://127.0.0.1:8000/api/gemini/judge/pairwise"
 
 data_pairwise = {
     "prompt":f"""# System_prompt
@@ -106,6 +106,7 @@ if response.status_code == 200:
         # Filter out keep-alive new lines
         if line:
             # Decode and print each line of the response
-            print(json.loads(line.decode('utf-8'))['pairwise_choice'])
+            # print(json.loads(line.decode('utf-8'))['pairwise_choice'])
+            print(line.decode('utf-8'))
 else:
     print("Failed to connect:", response.status_code, response.text)

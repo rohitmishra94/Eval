@@ -4,3 +4,4 @@ tenacity
 python-dotenv
 fastapi
 uvicorn
+google-generativeai>=0.7.2
